@@ -52,6 +52,8 @@ class PopupController {
     this.clearCacheBtn.addEventListener('click', () => this.clearCache());
     this.openLogsBtn.addEventListener('click', () => this.openLogs());
     this.openSettingsBtn.addEventListener('click', () => this.openAdvancedSettings());
+    this.openHelpBtn = document.getElementById('openHelp');
+    this.openHelpBtn.addEventListener('click', () => this.openHelp());
     
     // Listen for messages from content script
     chrome.runtime.onMessage.addListener((message) => {
@@ -130,7 +132,14 @@ class PopupController {
       this.showMessage('Project root set successfully!', 'success');
       
     } catch (error) {
-      this.showMessage(`Failed to set project root: ${error.message}`, 'error');
+      // Check if it's a blocked request error
+      if (error.message.includes('ERR_BLOCKED_BY_CLIENT') || 
+          error.message.includes('ERR_FAILED') ||
+          error.message.includes('ERR_NETWORK')) {
+        this.showMessage('Request blocked by ad blocker or privacy extension. Please disable extensions for localhost or add localhost:3000 to your allowlist.', 'error');
+      } else {
+        this.showMessage(`Failed to set project root: ${error.message}`, 'error');
+      }
     } finally {
       this.setProjectBtn.classList.remove('loading');
       this.setProjectBtn.disabled = false;
@@ -162,6 +171,14 @@ class PopupController {
         return;
       }
       
+      // Check if content script is loaded
+      try {
+        await chrome.tabs.sendMessage(tab.id, { type: 'PING' });
+      } catch (pingError) {
+        this.showMessage('Content script not loaded. Please refresh the Claude page and try again.', 'error');
+        return;
+      }
+      
       this.isExtracting = true;
       this.extractBtn.disabled = true;
       this.extractBtn.textContent = 'Extracting...';
@@ -172,7 +189,11 @@ class PopupController {
       this.showMessage('Starting artifact extraction...', 'info');
       
     } catch (error) {
-      this.showMessage(`Failed to start extraction: ${error.message}`, 'error');
+      if (error.message.includes('Receiving end does not exist')) {
+        this.showMessage('Content script not loaded. Please refresh the Claude page and try again.', 'error');
+      } else {
+        this.showMessage(`Failed to start extraction: ${error.message}`, 'error');
+      }
       this.resetExtractionState();
     }
   }
@@ -227,7 +248,15 @@ class PopupController {
       statusText.textContent = 'Service Online';
     } else {
       statusDot.className = 'status-dot';
-      statusText.textContent = 'Service Offline';
+      // Check if it's been blocked recently
+      const timeSinceCheck = Date.now() - this.serviceStatus.lastCheck;
+      if (timeSinceCheck < 60000) { // Within last minute
+        statusText.textContent = 'Service Blocked';
+        statusDot.className = 'status-dot blocked';
+      } else {
+        statusText.textContent = 'Service Offline';
+        statusDot.className = 'status-dot';
+      }
     }
   }
 
@@ -289,6 +318,35 @@ class PopupController {
   openAdvancedSettings() {
     // Future: Open advanced settings page
     this.showMessage('Advanced settings coming in future version', 'info');
+  }
+
+  openHelp() {
+    const helpText = `
+🔧 Troubleshooting Guide:
+
+1. **Service Blocked Error (ERR_BLOCKED_BY_CLIENT):**
+   - Disable ad blockers (uBlock Origin, AdBlock Plus)
+   - Disable privacy extensions (Privacy Badger)
+   - Add localhost:3000 to your allowlist
+   - Or temporarily disable extensions for localhost
+
+2. **Service Offline:**
+   - Make sure the local service is running
+   - Run: ./start-service.sh in the project directory
+   - Check if port 3000 is available
+
+3. **Extension Not Working:**
+   - Refresh the Claude page
+   - Check browser console for errors
+   - Ensure you're on claude.ai domain
+
+4. **Need More Help:**
+   - Check the README.md file
+   - View browser console logs
+   - Restart the extension
+    `;
+    
+    this.showMessage(helpText, 'info');
   }
 }
 

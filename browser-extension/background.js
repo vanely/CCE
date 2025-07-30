@@ -14,6 +14,11 @@ class BackgroundService {
       } else if (message.type === 'NOTIFICATION') {
         this.broadcastToPopup(message);
         this.showNotification(message.data.message);
+      } else if (message.type === 'CONTENT_SCRIPT_LOADED') {
+        console.log('✅ Content script loaded on:', message.url);
+        // Keep track of loaded content scripts
+        this.loadedContentScripts = this.loadedContentScripts || new Set();
+        this.loadedContentScripts.add(sender.tab?.id);
       }
       
       // Keep the message channel open for async responses
@@ -95,9 +100,18 @@ class ServiceHealthMonitor {
       this.isServiceHealthy = false;
       this.lastHealthCheck = Date.now();
       
-      console.log('❌ Local service is not responding');
-      chrome.action.setBadgeText({ text: '!' });
-      chrome.action.setBadgeBackgroundColor({ color: '#FF0000' });
+      // Check if it's a blocked request error
+      if (error.message.includes('ERR_BLOCKED_BY_CLIENT') || 
+          error.message.includes('ERR_FAILED') ||
+          error.message.includes('ERR_NETWORK')) {
+        console.log('❌ Request blocked by client (ad blocker/privacy extension)');
+        chrome.action.setBadgeText({ text: '!' });
+        chrome.action.setBadgeBackgroundColor({ color: '#FF8800' }); // Orange for blocked
+      } else {
+        console.log('❌ Local service is not responding');
+        chrome.action.setBadgeText({ text: '!' });
+        chrome.action.setBadgeBackgroundColor({ color: '#FF0000' }); // Red for offline
+      }
     }
   }
 
