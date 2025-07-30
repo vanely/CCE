@@ -25,6 +25,7 @@ echo "📦 Installing dependencies..."
 cd local-service
 npm install
 
+# what does this condition mean?
 if [ $? -ne 0 ]; then
     echo "❌ Failed to install dependencies"
     exit 1

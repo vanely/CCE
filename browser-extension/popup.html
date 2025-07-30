@@ -1,0 +1,111 @@
+<!-- browser-extension/popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Extractor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="6" fill="#007AFF"/>
+          <path d="M8 10h8v4H8v-4z" fill="white"/>
+        </svg>
+        <h1>Claude Code Extractor</h1>
+      </div>
+      <div class="status-indicator" id="serviceStatus">
+        <div class="status-dot"></div>
+        <span>Checking...</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- Project Configuration -->
+      <section class="config-section">
+        <h2>Project Configuration</h2>
+        <div class="input-group">
+          <label for="projectPath">Project Root Path:</label>
+          <input 
+            type="text" 
+            id="projectPath" 
+            placeholder="/path/to/your/project"
+            title="The root directory where artifacts will be organized"
+          >
+          <button id="browseProject" class="btn-secondary">Browse</button>
+        </div>
+        <button id="setProject" class="btn-primary">Set Project Root</button>
+      </section>
+
+      <!-- Extraction Controls -->
+      <section class="extraction-section">
+        <h2>Artifact Extraction</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="totalArtifacts">0</span>
+            <span class="stat-label">Found</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="extractedCount">0</span>
+            <span class="stat-label">Extracted</span>
+          </div>
+        </div>
+
+        <div class="progress-container" id="progressContainer" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="progress-text" id="progressText">0%</span>
+        </div>
+
+        <button id="extractArtifacts" class="btn-primary btn-large">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2L15 7H12V14H8V7H5L10 2Z" fill="currentColor"/>
+            <path d="M4 16H16V18H4V16Z" fill="currentColor"/>
+          </svg>
+          Auto-Extract All Artifacts
+        </button>
+      </section>
+
+      <!-- Settings -->
+      <section class="settings-section">
+        <h2>Settings</h2>
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoCleanDownloads" checked>
+            <span class="checkmark"></span>
+            Auto-clean downloaded files
+          </label>
+        </div>
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="createBackups" checked>
+            <span class="checkmark"></span>
+            Create backup files on overwrite
+          </label>
+        </div>
+      </section>
+
+      <!-- Status Messages -->
+      <section class="messages-section">
+        <div id="messageContainer" class="message-container"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <button id="clearCache" class="btn-text">Clear Cache</button>
+        <button id="openLogs" class="btn-text">View Logs</button>
+        <button id="openSettings" class="btn-text">Advanced</button>
+      </div>
+      <div class="version">v1.0.0</div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

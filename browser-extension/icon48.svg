@@ -1,0 +1,202 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- QUANTUM HYPERGRADIENT - 16 color stops with impossible physics -->
+    <linearGradient id="quantumHyper48" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff006e;stop-opacity:1" />
+      <stop offset="6.25%" style="stop-color:#8338ec;stop-opacity:1" />
+      <stop offset="12.5%" style="stop-color:#3a86ff;stop-opacity:1" />
+      <stop offset="18.75%" style="stop-color:#06ffa5;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ffbe0b;stop-opacity:1" />
+      <stop offset="31.25%" style="stop-color:#fb5607;stop-opacity:1" />
+      <stop offset="37.5%" style="stop-color:#ff006e;stop-opacity:1" />
+      <stop offset="43.75%" style="stop-color:#8338ec;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3a86ff;stop-opacity:1" />
+      <stop offset="56.25%" style="stop-color:#06ffa5;stop-opacity:1" />
+      <stop offset="62.5%" style="stop-color:#ffbe0b;stop-opacity:1" />
+      <stop offset="68.75%" style="stop-color:#fb5607;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ff006e;stop-opacity:1" />
+      <stop offset="81.25%" style="stop-color:#8338ec;stop-opacity:1" />
+      <stop offset="87.5%" style="stop-color:#3a86ff;stop-opacity:1" />
+      <stop offset="93.75%" style="stop-color:#06ffa5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff006e;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- FRACTAL DEPTH HYPERGRADIENT -->
+    <radialGradient id="fractalHyper48" cx="20%" cy="20%" r="80%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+      <stop offset="20%" style="stop-color:#ffffff;stop-opacity:0.5" />
+      <stop offset="40%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="60%" style="stop-color:#ffffff;stop-opacity:0.15" />
+      <stop offset="80%" style="stop-color:#ffffff;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- QUANTUM HYPERGLOW FILTER -->
+    <filter id="quantumHyperGlow48" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur stdDeviation="3" result="blur1"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur2"/>
+      <feGaussianBlur stdDeviation="0.8" result="blur3"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur3"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+      <feColorMatrix type="matrix" values="1.2 0 0 0 0  0 1.2 0 0 0  0 0 1.2 0 0  0 0 0 1 0"/>
+    </filter>
+    
+    <!-- REALITY-SHATTERING SHADOW -->
+    <filter id="realityShatter48" x="-150%" y="-150%" width="400%" height="400%">
+      <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.6"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="1" flood-color="#ffffff" flood-opacity="0.4"/>
+      <feDropShadow dx="4" dy="0" stdDeviation="2" flood-color="#ff006e" flood-opacity="0.3"/>
+      <feDropShadow dx="-4" dy="0" stdDeviation="2" flood-color="#06ffa5" flood-opacity="0.3"/>
+      <feDropShadow dx="0" dy="-2" stdDeviation="1" flood-color="#8338ec" flood-opacity="0.2"/>
+      <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#ffbe0b" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- QUANTUM EMBOSS FILTER -->
+    <filter id="quantumEmboss48">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="8" specularConstant="1.5" specularExponent="25" lighting-color="#ffffff">
+        <fePointLight x="15" y="15" z="300"/>
+      </feSpecularLighting>
+      <feComposite in="specOut" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1.2" k4="0"/>
+    </filter>
+    
+    <!-- FRACTAL MATRIX PATTERN -->
+    <pattern id="fractalMatrix48" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="none"/>
+      <path d="M2 2L6 6L2 10" stroke="white" stroke-width="1" opacity="0.3"/>
+      <path d="M12 2L8 6L12 10" stroke="white" stroke-width="1" opacity="0.3"/>
+      <path d="M6 2L10 6L6 10" stroke="white" stroke-width="0.8" opacity="0.25"/>
+      <path d="M2 6L10 6" stroke="white" stroke-width="0.6" opacity="0.2"/>
+      <path d="M6 2L6 10" stroke="white" stroke-width="0.6" opacity="0.2"/>
+      <circle cx="6" cy="6" r="0.5" fill="white" opacity="0.2"/>
+      <circle cx="10" cy="6" r="0.3" fill="white" opacity="0.15"/>
+      <circle cx="6" cy="10" r="0.3" fill="white" opacity="0.15"/>
+    </pattern>
+    
+    <!-- QUANTUM CIRCUIT PATTERN -->
+    <pattern id="quantumCircuit48" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="none"/>
+      <path d="M3 3H9V9H3Z" stroke="white" stroke-width="0.8" fill="none" opacity="0.2"/>
+      <path d="M15 3H21V9H15Z" stroke="white" stroke-width="0.8" fill="none" opacity="0.2"/>
+      <path d="M3 15H9V21H3Z" stroke="white" stroke-width="0.8" fill="none" opacity="0.2"/>
+      <path d="M15 15H21V21H15Z" stroke="white" stroke-width="0.8" fill="none" opacity="0.2"/>
+      <path d="M12 3V9" stroke="white" stroke-width="0.6" opacity="0.15"/>
+      <path d="M12 15V21" stroke="white" stroke-width="0.6" opacity="0.15"/>
+      <path d="M3 12H9" stroke="white" stroke-width="0.6" opacity="0.15"/>
+      <path d="M15 12H21" stroke="white" stroke-width="0.6" opacity="0.15"/>
+      <circle cx="12" cy="12" r="1" fill="white" opacity="0.1"/>
+      <circle cx="6" cy="6" r="0.4" fill="white" opacity="0.15"/>
+      <circle cx="18" cy="6" r="0.4" fill="white" opacity="0.15"/>
+      <circle cx="6" cy="18" r="0.4" fill="white" opacity="0.15"/>
+      <circle cx="18" cy="18" r="0.4" fill="white" opacity="0.15"/>
+    </pattern>
+    
+    <!-- NEURAL QUANTUM PATTERN -->
+    <pattern id="neuralQuantum48" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="none"/>
+      <circle cx="2" cy="2" r="0.4" fill="white" opacity="0.25"/>
+      <circle cx="10" cy="2" r="0.4" fill="white" opacity="0.25"/>
+      <circle cx="2" cy="10" r="0.4" fill="white" opacity="0.25"/>
+      <circle cx="10" cy="10" r="0.4" fill="white" opacity="0.25"/>
+      <circle cx="6" cy="6" r="0.4" fill="white" opacity="0.35"/>
+      <path d="M2 2L6 6" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M10 2L6 6" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M2 10L6 6" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M10 10L6 6" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M2 2L10 10" stroke="white" stroke-width="0.2" opacity="0.15"/>
+      <path d="M10 2L2 10" stroke="white" stroke-width="0.2" opacity="0.15"/>
+    </pattern>
+    
+    <!-- QUANTUM DATA PATTERN -->
+    <pattern id="quantumData48" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="none"/>
+      <path d="M0 0L2 2L0 4" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M6 0L4 2L6 4" stroke="white" stroke-width="0.4" opacity="0.2"/>
+      <path d="M2 0L2 4" stroke="white" stroke-width="0.3" opacity="0.15"/>
+      <path d="M0 2L4 2" stroke="white" stroke-width="0.3" opacity="0.15"/>
+      <circle cx="2" cy="2" r="0.2" fill="white" opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <!-- QUANTUM HYPERBACKGROUND -->
+  <rect width="48" height="48" rx="12" fill="url(#quantumHyper48)" filter="url(#realityShatter48)"/>
+  
+  <!-- FRACTAL DEPTH HYPEROVERLAY -->
+  <rect width="48" height="48" rx="12" fill="url(#fractalHyper48)"/>
+  
+  <!-- QUANTUM MATRIX LAYER -->
+  <rect width="48" height="48" rx="12" fill="url(#fractalMatrix48)"/>
+  
+  <!-- QUANTUM CIRCUIT LAYER -->
+  <rect width="48" height="48" rx="12" fill="url(#quantumCircuit48)"/>
+  
+  <!-- NEURAL QUANTUM LAYER -->
+  <rect width="48" height="48" rx="12" fill="url(#neuralQuantum48)"/>
+  
+  <!-- QUANTUM DATA LAYER -->
+  <rect width="48" height="48" rx="12" fill="url(#quantumData48)"/>
+  
+  <!-- QUANTUM CODE BRACKETS -->
+  <path d="M12 15L18 24L12 33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#quantumHyperGlow48)"/>
+  <path d="M36 15L30 24L36 33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#quantumHyperGlow48)"/>
+  
+  <!-- QUANTUM CODE LINES -->
+  <path d="M20 18H28" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.95" filter="url(#quantumEmboss48)"/>
+  <path d="M20 22H26" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.85" filter="url(#quantumEmboss48)"/>
+  <path d="M20 26H24" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.75" filter="url(#quantumEmboss48)"/>
+  
+  <!-- QUANTUM DOWNLOAD BUTTON -->
+  <g filter="url(#quantumHyperGlow48)">
+    <!-- Button background with quantum gradient -->
+    <circle cx="24" cy="36" r="10" fill="url(#quantumHyper48)" opacity="0.95"/>
+    <circle cx="24" cy="36" r="10" fill="url(#fractalHyper48)" opacity="0.4"/>
+    
+    <!-- Download arrow -->
+    <path d="M24 28V40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M18 34L24 40L30 34" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- QUANTUM PARTICLES -->
+  <circle cx="6" cy="6" r="1.5" fill="white" opacity="0.95" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="42" cy="10" r="1" fill="white" opacity="0.8" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="46" cy="26" r="1.2" fill="white" opacity="0.9" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="38" cy="42" r="0.8" fill="white" opacity="0.7" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="10" cy="44" r="1.1" fill="white" opacity="0.8" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="2" cy="28" r="0.9" fill="white" opacity="0.6" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="34" cy="8" r="0.7" fill="white" opacity="0.5" filter="url(#quantumHyperGlow48)"/>
+  
+  <!-- QUANTUM SPARKLES -->
+  <path d="M4 4L6 6L4 8" stroke="white" stroke-width="1.5" opacity="1" filter="url(#quantumHyperGlow48)"/>
+  <path d="M44 4L42 6L44 8" stroke="white" stroke-width="1.5" opacity="1" filter="url(#quantumHyperGlow48)"/>
+  <path d="M4 44L6 42L4 40" stroke="white" stroke-width="1.5" opacity="1" filter="url(#quantumHyperGlow48)"/>
+  <path d="M44 44L42 42L44 40" stroke="white" stroke-width="1.5" opacity="1" filter="url(#quantumHyperGlow48)"/>
+  <path d="M24 4L26 6L24 8" stroke="white" stroke-width="1.2" opacity="0.9" filter="url(#quantumHyperGlow48)"/>
+  <path d="M24 44L26 42L24 40" stroke="white" stroke-width="1.2" opacity="0.9" filter="url(#quantumHyperGlow48)"/>
+  
+  <!-- QUANTUM ENERGY RINGS -->
+  <circle cx="24" cy="24" r="18" stroke="white" stroke-width="0.8" opacity="0.3" fill="none"/>
+  <circle cx="24" cy="24" r="12" stroke="white" stroke-width="0.6" opacity="0.25" fill="none"/>
+  <circle cx="24" cy="24" r="6" stroke="white" stroke-width="0.4" opacity="0.2" fill="none"/>
+  
+  <!-- QUANTUM BINARY DOTS -->
+  <circle cx="16" cy="16" r="0.8" fill="white" opacity="0.6" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="32" cy="16" r="0.8" fill="white" opacity="0.6" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="16" cy="32" r="0.8" fill="white" opacity="0.6" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="32" cy="32" r="0.8" fill="white" opacity="0.6" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="24" cy="12" r="0.6" fill="white" opacity="0.5" filter="url(#quantumHyperGlow48)"/>
+  <circle cx="24" cy="36" r="0.6" fill="white" opacity="0.5" filter="url(#quantumHyperGlow48)"/>
+  
+  <!-- QUANTUM REFLECTIONS -->
+  <ellipse cx="18" cy="18" rx="4" ry="2" fill="white" opacity="0.15" transform="rotate(45 18 18)"/>
+  <ellipse cx="30" cy="30" rx="4" ry="2" fill="white" opacity="0.15" transform="rotate(45 30 30)"/>
+  <ellipse cx="18" cy="30" rx="3" ry="1.5" fill="white" opacity="0.1" transform="rotate(-45 18 30)"/>
+  <ellipse cx="30" cy="18" rx="3" ry="1.5" fill="white" opacity="0.1" transform="rotate(-45 30 18)"/>
+  
+  <!-- QUANTUM AURA -->
+  <circle cx="24" cy="24" r="22" stroke="url(#quantumHyper48)" stroke-width="0.5" opacity="0.1" fill="none"/>
+  <circle cx="24" cy="24" r="20" stroke="url(#quantumHyper48)" stroke-width="0.3" opacity="0.08" fill="none"/>
+</svg> 

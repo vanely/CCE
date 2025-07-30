@@ -21,7 +21,6 @@
     "cors": "^2.8.5",
     "chokidar": "^3.5.3",
     "fs-extra": "^11.1.1",
-    "path": "^0.12.7",
     "chalk": "^4.1.2"
   },
   "devDependencies": {
