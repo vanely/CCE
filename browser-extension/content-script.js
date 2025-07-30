@@ -383,9 +383,53 @@ class ClaudeArtifactExtractor {
       return;
     }
     
-    console.log('✅ Found right panel, searching for code elements...');
+    console.log('✅ Found right panel, searching for content...');
     
-    // Look for the code element that contains the full artifact (only in the right panel)
+    // First, check if this is a markdown artifact (markdown can contain code snippets)
+    const markdownDiv = rightPanel.querySelector('#markdown-artifact');
+    
+    if (markdownDiv) {
+      console.log('✅ Found markdown artifact div');
+      // Convert markdown HTML content back to markdown text
+      const markdownText = this.convertMarkdownHtmlToText(markdownDiv);
+      
+      if (markdownText && markdownText.trim().length > 10) {
+        console.log(`🔍 Extracted ${markdownText.length} characters of markdown content`);
+        
+        // Determine filename and language
+        const filename = this.generateFilenameFromArtifactName(artifactName, 'markdown');
+        
+        // Send to local service
+        try {
+          const result = await this.sendToLocalService({
+            type: 'ARTIFACT_DETECTED',
+            data: {
+              filePath: filename,
+              content: markdownText,
+              language: 'markdown',
+              timestamp: Date.now(),
+              source: 'markdown_html_extraction',
+              originalFilename: artifactName
+            }
+          });
+          
+          if (result.success) {
+            console.log(`✅ Successfully extracted markdown: ${filename}`);
+          } else {
+            throw new Error(result.error || 'Unknown error from local service');
+          }
+        } catch (error) {
+          console.error(`❌ Failed to extract markdown ${filename}:`, error);
+          throw error;
+        }
+        return;
+      } else {
+        console.log('❌ Markdown content is empty or too short');
+      }
+    }
+    
+    // If no markdown found, look for code elements
+    console.log('🔍 No markdown artifact found, looking for code elements...');
     const codeSelectors = [
       'code.language-json',
       'code.language-javascript', 
@@ -403,54 +447,6 @@ class ClaudeArtifactExtractor {
       if (codeElement) {
         console.log(`✅ Found code element with selector: ${selector} in right panel`);
         break;
-      }
-    }
-    
-    // If no code element found, look for markdown content
-    if (!codeElement) {
-      console.log('🔍 No code element found, looking for markdown content...');
-      const markdownDiv = rightPanel.querySelector('#markdown-artifact');
-      
-      if (markdownDiv) {
-        console.log('✅ Found markdown artifact div');
-        // Convert markdown HTML content back to markdown text
-        const markdownText = this.convertMarkdownHtmlToText(markdownDiv);
-        
-        if (markdownText && markdownText.trim().length > 10) {
-          console.log(`🔍 Extracted ${markdownText.length} characters of markdown content`);
-          
-          // Determine filename and language
-          const filename = this.generateFilenameFromArtifactName(artifactName, 'markdown');
-          
-          // Send to local service
-          try {
-            const result = await this.sendToLocalService({
-              type: 'ARTIFACT_DETECTED',
-              data: {
-                filePath: filename,
-                content: markdownText,
-                language: 'markdown',
-                timestamp: Date.now(),
-                source: 'markdown_html_extraction',
-                originalFilename: artifactName
-              }
-            });
-            
-            if (result.success) {
-              console.log(`✅ Successfully extracted markdown: ${filename}`);
-            } else {
-              throw new Error(result.error || 'Unknown error from local service');
-            }
-          } catch (error) {
-            console.error(`❌ Failed to extract markdown ${filename}:`, error);
-            throw error;
-          }
-          return;
-        } else {
-          console.log('❌ Markdown content is empty or too short');
-        }
-      } else {
-        console.log('❌ No markdown artifact div found');
       }
     }
     
