@@ -34,32 +34,32 @@ fi
 echo "✅ Dependencies installed successfully"
 
 # Create service script
-echo "📝 Creating service startup script..."
-cat > ../start-service.sh << 'EOFINNER'
-#!/bin/bash
-cd "$(dirname "$0")/local-service"
-echo "🚀 Starting Claude Code Extractor Service..."
-echo "📡 Service will be available at http://localhost:3000"
-echo "🛑 Press Ctrl+C to stop"
-echo ""
-node server.js
-EOFINNER
+# echo "📝 Creating service startup script..."
+# cat > ../start-service.sh << 'EOFINNER'
+# #!/bin/bash
+# cd "$(dirname "$0")/local-service"
+# echo "🚀 Starting Claude Code Extractor Service..."
+# echo "📡 Service will be available at http://localhost:3000"
+# echo "🛑 Press Ctrl+C to stop"
+# echo ""
+# node server.js
+# EOFINNER
 
-chmod +x ../start-service.sh
+# chmod +x ../start-service.sh
 
-# Create development script
-cat > ../start-dev.sh << 'EOFINNER'
-#!/bin/bash
-cd "$(dirname "$0")/local-service"
-echo "🔧 Starting Claude Code Extractor Service in development mode..."
-echo "📡 Service will be available at http://localhost:3000"
-echo "🔄 Auto-restart enabled"
-echo "🛑 Press Ctrl+C to stop"
-echo ""
-npm run dev
-EOFINNER
+# # Create development script
+# cat > ../start-dev.sh << 'EOFINNER'
+# #!/bin/bash
+# cd "$(dirname "$0")/local-service"
+# echo "🔧 Starting Claude Code Extractor Service in development mode..."
+# echo "📡 Service will be available at http://localhost:3000"
+# echo "🔄 Auto-restart enabled"
+# echo "🛑 Press Ctrl+C to stop"
+# echo ""
+# npm run dev
+# EOFINNER
 
-chmod +x ../start-dev.sh
+# chmod +x ../start-dev.sh
 
 echo ""
 echo "🎉 Setup complete!"
