@@ -118,7 +118,7 @@ class PopupController {
       this.setProjectBtn.classList.add('loading');
       this.setProjectBtn.disabled = true;
       
-      const response = await fetch('http://localhost:3000/api/set-project', {
+      const response = await fetch('http://localhost:3030/api/set-project', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ projectRoot: projectPath })
@@ -136,7 +136,7 @@ class PopupController {
       if (error.message.includes('ERR_BLOCKED_BY_CLIENT') || 
           error.message.includes('ERR_FAILED') ||
           error.message.includes('ERR_NETWORK')) {
-        this.showMessage('Request blocked by ad blocker or privacy extension. Please disable extensions for localhost or add localhost:3000 to your allowlist.', 'error');
+        this.showMessage('Request blocked by ad blocker or privacy extension. Please disable extensions for localhost or add localhost:3030 to your allowlist.', 'error');
       } else {
         this.showMessage(`Failed to set project root: ${error.message}`, 'error');
       }
@@ -327,7 +327,7 @@ class PopupController {
 1. **Service Blocked Error (ERR_BLOCKED_BY_CLIENT):**
    - Disable ad blockers (uBlock Origin, AdBlock Plus)
    - Disable privacy extensions (Privacy Badger)
-   - Add localhost:3000 to your allowlist
+           - Add localhost:3030 to your allowlist
    - Or temporarily disable extensions for localhost
 
 2. **Service Offline:**

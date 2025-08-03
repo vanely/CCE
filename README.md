@@ -40,7 +40,7 @@ npm run dev
 ./start-service.sh
 ```
 
-The service will be available at `http://localhost:3000`
+The service will be available at `http://localhost:3030`
 
 ### 4. Configure & Use
 
@@ -196,7 +196,7 @@ To add support for new file types:
 ## Troubleshooting
 
 ### Extension Not Working
-- Check that the local service is running on port 3000
+- Check that the local service is running on port 3030
 - Verify you're on a Claude conversation page
 - Check browser console for error messages
 
@@ -207,7 +207,7 @@ To add support for new file types:
 
 ### Service Won't Start
 - Check Node.js version (16+ required)
-- Verify port 3000 is available
+- Verify port 3030 is available
 - Check for missing dependencies (`npm install`)
 
 ### Downloads Folder Issues
@@ -219,7 +219,7 @@ To add support for new file types:
 
 ### Environment Variables
 ```bash
-PORT=3000                    # Service port
+PORT=3030                    # Service port
 DOWNLOADS_PATH=~/Downloads   # Custom downloads path
 BACKUP_RETENTION_DAYS=7      # Backup file retention
 ```
@@ -229,7 +229,7 @@ Access via extension popup:
 - Project root path
 - Auto-cleanup downloads
 - Create backups on overwrite
-- Service URL (default: localhost:3000)
+- Service URL (default: localhost:3030)
 
 ## Security
 

@@ -8,7 +8,7 @@ const DownloadMonitor = require('./download-monitor');
 const FileManager = require('./file-manager');
 
 class ClaudeCodeExtractorService {
-  constructor(port = 3000) {
+  constructor(port = 3030) {
     this.port = port;
     this.app = express();
     this.projectRoot = null;

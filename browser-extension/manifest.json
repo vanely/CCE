@@ -10,7 +10,7 @@
   ],
   "host_permissions": [
     "*://claude.ai/*",
-    "http://localhost:3000/*"
+            "http://localhost:3030/*"
   ],
   "content_scripts": [{
     "matches": ["*://claude.ai/*", "*://*.claude.ai/*", "*://claude.com/chat/*"],

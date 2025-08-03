@@ -33,7 +33,7 @@ class BackgroundService {
         
         // Set default configuration
         chrome.storage.local.set({
-          serviceUrl: 'http://localhost:3000',
+          serviceUrl: 'http://localhost:3030',
           autoCleanDownloads: true,
           createBackups: true
         });
@@ -80,7 +80,7 @@ class ServiceHealthMonitor {
 
   async checkServiceHealth() {
     try {
-      const response = await fetch('http://localhost:3000/api/status', {
+      const response = await fetch('http://localhost:3030/api/status', {
         method: 'GET',
         timeout: 5000
       });

@@ -777,7 +777,7 @@ class ClaudeArtifactExtractor {
 
   async sendToLocalService(message) {
     try {
-      const response = await fetch('http://localhost:3000/api/process-artifact', {
+      const response = await fetch('http://localhost:3030/api/process-artifact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(message)
@@ -796,8 +796,8 @@ class ClaudeArtifactExtractor {
       if (error.message.includes('ERR_BLOCKED_BY_CLIENT') || 
           error.message.includes('ERR_FAILED') ||
           error.message.includes('ERR_NETWORK')) {
-        console.error('🚫 Request blocked by ad blocker or privacy extension. Please disable extensions for localhost or add localhost:3000 to your allowlist.');
-        this.notifyUser('Request blocked by browser extension. Please disable ad blockers for localhost:3000');
+        console.error('🚫 Request blocked by ad blocker or privacy extension. Please disable extensions for localhost or add localhost:3030 to your allowlist.');
+        this.notifyUser('Request blocked by browser extension. Please disable ad blockers for localhost:3030');
       }
       
       throw error;
