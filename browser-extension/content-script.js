@@ -82,7 +82,7 @@ class ClaudeArtifactExtractor {
     console.log('🔍 Searching for artifact preview buttons in chat...');
     
     // Find buttons with aria-label="Preview contents" (artifact buttons in chat)
-    const artifactButtons = Array.from(document.querySelectorAll('button[aria-label="Preview contents"]'));
+    const artifactButtons = Array.from(document.querySelectorAll('div[aria-label="Preview contents"]'));
     console.log('🔍 Found artifact buttons:', artifactButtons.length);
     
     // Show details of each button found
